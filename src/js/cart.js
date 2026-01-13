@@ -1,9 +1,9 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage } from './utils.mjs';
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
+  const cartItems = getLocalStorage('so-cart');
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  document.querySelector('.product-list').innerHTML = htmlItems.join('');
 }
 
 function cartItemTemplate(item) {
@@ -25,8 +25,9 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-if (getLocalStorage("so-cart")) {
+if (getLocalStorage('so-cart')) {
   renderCartContents();
 } else {
-  document.querySelector(".product-list").innerHTML = `<p>Your cart is empty</p>`;
-};
+  document.querySelector('.product-list').innerHTML =
+    `<p>Your cart is empty</p>`;
+}
