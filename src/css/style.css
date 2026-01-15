@@ -151,6 +151,10 @@ button {
   text-align: center;
 }
 
+.hide {
+  display: none;
+}
+
 .products {
   margin-top: 2rem;
   padding: 1rem;
