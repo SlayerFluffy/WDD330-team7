@@ -33,7 +33,7 @@ if (getLocalStorage('so-cart')) {
   let total = 0;
   for (let item in cartItems) {
     total += cartItems[item].FinalPrice;
-  };
+  }
   document.querySelector('.cart-total').insertAdjacentHTML('beforeend', total);
 } else {
   document.querySelector('.product-list').innerHTML =
