@@ -58,5 +58,5 @@ export async function loadHeaderFooter() {
   const footerElement = document.querySelector('#main-footer');
 
   renderWithTemplate(headerTemplate, headerElement);
-  renderWithTempalte(footerTemplate, footerElement);
+  renderWithTemplate(footerTemplate, footerElement);
 }
