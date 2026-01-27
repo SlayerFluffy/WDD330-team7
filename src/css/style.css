@@ -214,6 +214,7 @@ button {
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
+  position: relative;
 }
 
 .cart-card__image {
@@ -243,6 +244,36 @@ button {
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;
+}
+
+.cart-card__remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0.5rem 0.5rem;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  z-index: 1;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-card__remove:hover {
+  background: #ff2222;
+  transform: scale(1.1);
+}
+
+.cart-card__remove:active {
+  transform: scale(0.95);
 }
 
 @media screen and (min-width: 500px) {
