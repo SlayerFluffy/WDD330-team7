@@ -22,7 +22,7 @@ function renderCartContents() {
 
 function calculateTotal(list) {
     const amounts = list.map((item) => item.FinalPrice);
-    let total = amounts.reduce((sum, item) => sum + item, 0);
+    const total = amounts.reduce((sum, item) => sum + item, 0);
     return total;
 }
 
@@ -31,7 +31,7 @@ function cartItemTemplate(item) {
         <button class="cart-card__remove" data-id="${item.Id}" title="Remove item from cart">&times;</button>
         <a href="#" class="cart-card__image">
             <img
-            src="${item.Images.PrimaryMedium}"
+            src="${item.Image}"
             alt="${item.Name}"
             />
         </a>
