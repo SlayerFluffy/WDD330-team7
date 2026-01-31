@@ -18,7 +18,7 @@
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
-        <form action="" method="">
+        <form name="orderForm">
           <fieldset id="cust-name">
             <label for="fname">First Name:</label>
             <input type="text" name="fname" required>
@@ -91,26 +91,27 @@
           </fieldset>
 
           <fieldset id="cust-payment">
-            <label for="cc-number">Credit Card Number:</label>
-            <input type="tel" name="cc-number" maxlength="16" required>
-            <label for="exp-date">Expiration Date:</label>
-            <input type="tel" name="exp-date" maxlength="4" required>
-            <label for="security-code">Security Code:</label>
-            <input type="tel" name="security-code" maxlength="3" required>
+            <label for="cardNumber">Credit Card Number:</label>
+            <input type="tel" name="cardNumber" maxlength="16" required>
+            <label for="expiration">Expiration Date:</label>
+            <input type="text" name="expiration" maxlength="4" required>
+            <label for="code">Security Code:</label>
+            <input type="tel" name="code" maxlength="3" required>
           </fieldset>
 
           <fieldset id="order-summary">
-            <label for="subtotal">Subtotal:</label>
-            <input type="text" name="subtotal" readonly id="order-subtotal">
-            <label for="tax">Tax:</label>
-            <input type="text" name="tax" readonly id="order-tax">
-            <label for="shipping">Shipping Estimate:</label>
-            <input type="text" name="shipping" readonly id="order-shipping">
-            <label for="total">Order Total:</label>
-            <input type="text" name="total" readonly id="order-total">
+
+            <div>Subtotal:</div>
+            <div id="subtotal"></div>
+            <div>Tax:</div>
+            <div id="tax"></div>
+            <div>Shipping Estimate:</div>
+            <div id="shipping"></div>
+            <div>Order Total:</div>
+            <div id="orderTotal"></div>
 
             <label for="submit">Confirm Order</label>
-            <input type="submit" name="submit">
+            <input type="submit" name="submit" id="submit">
           </fieldset>
         </form>
       </section>
