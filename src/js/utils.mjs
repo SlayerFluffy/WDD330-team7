@@ -60,3 +60,18 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
 }
+
+export function alertMessage(alertMessage, scroll = true) {
+  const alert = document.createElement('div');
+  alert.classList.add('alert');
+  alert.innerHTML = `<p>${alertMessage}</p><span>X</span>`
+  alert.addEventListener('click', function (e) {
+    if (e.target.tagName == 'SPAN') {
+      main.removeChild(this);
+    }
+  })
+  const main = document.querySelector('main');
+  main.prepend(alert);
+  if (scroll)
+    window.scrollTo(0, 0);
+}

@@ -1,4 +1,4 @@
-import { loadHeaderFooter } from './utils.mjs';
+import { loadHeaderFooter, alertMessage } from './utils.mjs';
 import CheckoutProcess from './CheckoutProcess.mjs';
 
 loadHeaderFooter();
@@ -11,5 +11,9 @@ document.querySelector("#zip").addEventListener("blur", checkout.calculateOrderS
 
 document.querySelector("#submit").addEventListener("click", (e) => {
     e.preventDefault();
-    checkout.checkout();
+    const myForm = document.forms[0];
+    const chk_status = myForm.checkValidity();
+    myForm.reportValidity();
+    if(chk_status)
+        checkout.checkout();
 });
