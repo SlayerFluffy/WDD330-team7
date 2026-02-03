@@ -17,11 +17,13 @@ function renderCartContents() {
 
     document.querySelector('.cart-total').innerHTML = `Total: $${calculateTotal(cartItems).toFixed(2)}`;
 
+    addQuantityListeners();
+
     addRemoveListeners();
 }
 
 function calculateTotal(list) {
-    const amounts = list.map((item) => item.FinalPrice);
+    const amounts = list.map((item) => item.FinalPrice*item.Quantity);
     const total = amounts.reduce((sum, item) => sum + item, 0);
     return total;
 }
@@ -39,7 +41,7 @@ function cartItemTemplate(item) {
             <h2 class="card__name">${item.Name}</h2>
         </a>
         <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-        <p class="cart-card__quantity">qty: 1</p>
+        <p>Qty: <input id="${item.Id}" type ="number" class="cart-card__quantity" min="1" max="100" value="${item.Quantity}" step="1"></p>
         <p class="cart-card__price">$${item.FinalPrice.toFixed(2)}</p>
     </li>`;
 
@@ -64,6 +66,34 @@ function addRemoveListeners() {
             e.preventDefault();
             const productId = button.getAttribute('data-id');
             removeFromCart(productId);
+        });
+    });
+}
+
+function modifyQuantity(quantityId, newQuantity) {
+    let cartItems = getLocalStorage('so-cart') || [];
+
+    const updatedCart = []
+    cartItems.forEach(item => {
+        if (item.Id === quantityId) {
+            item.Quantity = newQuantity;
+            updatedCart.push(item);
+        } else {
+            updatedCart.push(item);
+        };
+    });
+    setLocalStorage('so-cart', updatedCart);
+    renderCartContents();
+}
+
+function addQuantityListeners() {
+    const quantityInputs = document.querySelectorAll('.cart-card__quantity');
+
+    quantityInputs.forEach(input => {
+        input.addEventListener('input', (e) => {
+            const quantityId = e.target.id;
+            const newQuantity = e.target.valueAsNumber;
+            modifyQuantity(quantityId, newQuantity);
         });
     });
 }

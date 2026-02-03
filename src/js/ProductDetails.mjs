@@ -20,7 +20,16 @@ export default class ProductDetails {
 
     addProductToCart() {
         const cartItems = getLocalStorage('so-cart') || [];
-        cartItems.push(this.product);
+        
+        const existingItem = cartItems.find(item => item.Id === this.product.Id);
+        
+        if (existingItem) {
+            existingItem.Quantity++;
+        } else {
+            this.product.Quantity = 1;
+            cartItems.push(this.product);
+        }
+        
         setLocalStorage('so-cart', cartItems);
         alertMessage('Item has been added to your cart!');
     }

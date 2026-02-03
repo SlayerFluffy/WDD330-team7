@@ -20,14 +20,15 @@ export default class CheckoutProcess {
     }
 
     calculateSubtotal() {
-        const amounts = this.list.map((item) => item.FinalPrice);
+        const amounts = this.list.map((item) => item.FinalPrice * item.Quantity);
         this.subtotal = amounts.reduce((sum, item) => sum + item, 0);
         document.querySelector("#subtotal").innerHTML = `$${this.subtotal.toFixed(2)}`;
     }
 
     calculateOrderSummary() {
         this.tax = this.subtotal * 0.06; // 6% tax
-        this.shipping = 10 + ((this.list.length - 1) * 2);
+        const quantity = this.list.map((item) => item.Quantity);
+        this.shipping = 10 + ((quantity.reduce((sum, item) => sum + item, 0) - 1) * 2);
         this.orderTotal = this.subtotal + this.tax + this.shipping;
 
         this.displayOrderSummary()
